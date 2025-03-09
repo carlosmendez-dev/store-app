@@ -8,8 +8,10 @@ import AuthBase from '@/layouts/AuthLayout.vue';
 import { Head, useForm } from '@inertiajs/vue3';
 import { LoaderCircle } from 'lucide-vue-next';
 
+// se agregó el campo lastName
 const form = useForm({
     name: '',
+    lastName:'',
     email: '',
     password: '',
     password_confirmation: '',
@@ -28,11 +30,20 @@ const submit = () => {
 
         <form @submit.prevent="submit" class="flex flex-col gap-6">
             <div class="grid gap-6">
+
                 <div class="grid gap-2">
                     <Label for="name">Name</Label>
-                    <Input id="name" type="text" required autofocus :tabindex="1" autocomplete="name" v-model="form.name" placeholder="Full name" />
+                    <Input id="name" type="text" required autofocus :tabindex="1" autocomplete="name" v-model="form.name" placeholder="Name" />
                     <InputError :message="form.errors.name" />
                 </div>
+
+                <!--Se agregó un nuevo input para lastName-->
+                <div class="grid gap-2">
+                    <Label for="name">Last Name</Label>
+                    <Input id="name" type="text" required autofocus :tabindex="1" autocomplete="name" v-model="form.lastName" placeholder="Last name" />
+                    <InputError :message="form.errors.lastName" />
+                </div>
+                
 
                 <div class="grid gap-2">
                     <Label for="email">Email address</Label>

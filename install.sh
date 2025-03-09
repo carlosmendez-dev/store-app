@@ -1,4 +1,4 @@
-# Hola, este es el script de instalacion de el proyecto
+# Hola, este es el script de instalacion del proyecto
 # Para ejecutar este script usa: 'sh install.sh'
 composer install # instalar las dependencias de php
 npm install # instalar las dependencias de javascript

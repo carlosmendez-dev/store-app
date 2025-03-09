@@ -31,13 +31,18 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
+            // variables del useForm
             'name' => 'required|string|max:255',
+            'lastName' => 'required|string|max:255', // se agregó el campo lastName
             'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        // variables de la tabla usuarios
         $user = User::create([
             'name' => $request->name,
+            "last_name" => $request->lastName, // se agregó el campo lastName
+            "role" => "user", // se agregó el campo role con un valor de forma manual
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);

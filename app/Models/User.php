@@ -17,8 +17,11 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
+    # se agregó el campo last_name y role
     protected $fillable = [
         'name',
+        'last_name',
+        "role",
         'email',
         'password',
     ];

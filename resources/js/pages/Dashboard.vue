@@ -1,36 +1,29 @@
 <script setup lang="ts">
-import AppLayout from '@/layouts/AppLayout.vue';
-import { type BreadcrumbItem } from '@/types';
 import { Head } from '@inertiajs/vue3';
-import PlaceholderPattern from '../components/PlaceholderPattern.vue';
+import Navbar from '@/components/Dashboard/Navbar.vue';
+import Tabs from '@/components/Dashboard/Tabs.vue';
+import { ref,provide } from 'vue';
 
-const breadcrumbs: BreadcrumbItem[] = [
-    {
-        title: 'Dashboard',
-        href: '/dashboard',
-    },
-];
+const props = defineProps({
+    user:Object
+})
+
+const view = ref(1);
+function changeView(index){
+    view.value = index
+}
+provide("chageView",changeView);
+provide("user",props.user)
 </script>
 
 <template>
-    <Head title="Dashboard" />
-
-    <AppLayout :breadcrumbs="breadcrumbs">
-        <div class="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
-            <div class="grid auto-rows-min gap-4 md:grid-cols-3">
-                <div class="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border">
-                    <PlaceholderPattern />
-                </div>
-                <div class="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border">
-                    <PlaceholderPattern />
-                </div>
-                <div class="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border">
-                    <PlaceholderPattern />
-                </div>
-            </div>
-            <div class="relative min-h-[100vh] flex-1 rounded-xl border border-sidebar-border/70 dark:border-sidebar-border md:min-h-min">
-                <PlaceholderPattern />
-            </div>
-        </div>
-    </AppLayout>
+    <Head title="Inicio" />
+    <Navbar></Navbar>
+    <Tabs></Tabs>
+    <!--vistas-->
+    <div>
+        <section v-if="view==1">Hola desde inicio, vista 1</section>
+        <section v-if="view==2">Hola desde Carrito, vista 2</section>
+        <section v-if="view==3">Hola desde Admin, vista 3</section>
+    </div>
 </template>

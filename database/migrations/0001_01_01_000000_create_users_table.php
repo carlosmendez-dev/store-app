@@ -14,6 +14,10 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            # se agregó un campo para apellido
+            $table->string("last_name");
+            # se creó un campo para el rol que solo puede ser 'user' o 'admin'
+            $table->enum("role",["user","admin"])->default("user");
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
