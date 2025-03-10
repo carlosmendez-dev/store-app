@@ -6,6 +6,11 @@ import type { DefineComponent } from 'vue';
 import { createApp, h } from 'vue';
 import { ZiggyVue } from 'ziggy-js';
 import { initializeTheme } from './composables/useAppearance';
+import PrimeVue from "primevue/config"; // aqui importamos primevue plugin
+import Aura from "@primeuix/themes/aura"; // aqui importamos los temas (Aura, Lara, Nora)
+
+import 'primeicons/primeicons.css'
+
 
 // Extend ImportMeta interface for Vite...
 declare module 'vite/client' {
@@ -28,6 +33,12 @@ createInertiaApp({
     setup({ el, App, props, plugin }) {
         createApp({ render: () => h(App, props) })
             .use(plugin)
+            // registrando prime vue
+            .use(PrimeVue,{
+                theme:{
+                    preset:Aura // registrando el tema
+                }
+            })
             .use(ZiggyVue)
             .mount(el);
     },

@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { inject } from 'vue';
 
-const changeView = inject("chageView");
-const user = inject("user");
+// inject sirve para traer las variables y funciones que mandamos com provide()
+const changeView = inject("chageView"); // obtenemos la funcion para cambiar de vistas
+const user = inject("user"); // obtenemos la variable del usuario
 </script>
 
 <template>

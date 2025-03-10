@@ -2,8 +2,9 @@
 // nos permite enviar peticiones sin usar formularios
 import { router } from '@inertiajs/vue3';
 
+// funcion para cerrar sesion
 function logout(){
-    router.post("/logout");
+    router.post("/logout"); // hace una peticion POST a la ruta '/logout' para cerrar sesion
 }
 </script>
 
